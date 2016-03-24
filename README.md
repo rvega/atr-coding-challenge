@@ -38,7 +38,7 @@ Explanations are given in the comments in both the implementation and test files
 
 Without actual data from the servers, an analytical approach was required. 
 
-First step was to look for relevant papers and "Modeling TTL-Based Internet Caches" by Jung, Berger and Balakrishnan was found (included in the ttl-analysis directory). They provide a formal model in by means of mathematical expressions to find the hit and miss ratios of a cache system given the TTL of the cache and the inter-query times of the system. The system assumed in this challenge is different to the one modeled in the paper, however, in that we are refreshing the cache every time there is a query (hit or miss). Their system only refreshes the cache after the TTL has expired. Nevertheless, the paper provided a logical framework for analyzing the problem and their notation and some assumptions were taken from it for the following analysis.
+First step was to look for relevant papers and "Modeling TTL-Based Internet Caches" by Jung, Berger and Balakrishnan was found (included in the ttl-analysis directory). They provide a formal model by means of mathematical expressions to find the hit and miss ratios of a cache system given the TTL of the cache and the inter-query times of the system. The system assumed in this challenge is different to the one modeled in the paper, however, in that we are refreshing the cache every time there is a query (hit or miss). Their system only refreshes the cache after the TTL has expired. Nevertheless, the paper provided a logical framework for analyzing the problem and their notation and some assumptions were taken from it for the following analysis.
 
 Let's make some assumptions:
 
