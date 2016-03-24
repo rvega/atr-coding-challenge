@@ -1,0 +1,21 @@
+{
+  "name": "atr-coding-challenge",
+  "version": "1.0.0",
+  "description": "All The Rooms Coding Challenge",
+  "main": "memoize.js",
+  "dependencies": {},
+  "devDependencies": {
+    "async": "^2.0.0-rc.1",
+    "mocha": "^2.4.5",
+    "proxyquire": "^1.7.4"
+  },
+  "scripts": {
+    "test": "mocha tests/memoize_test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "XXXXXXXXXXXXXXXXXXXXXX"
+  },
+  "author": "Rafael Vega",
+  "license": "ISC"
+}
