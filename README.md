@@ -35,3 +35,37 @@ If you want to run the tests, do `npm install` and then `npm test`.
 Explanations are given in the comments in both the implementation and test files. Please read.
 
 ## Answer to bonus question.
+
+Without actual data from the servers, an analytical approach was required. 
+
+First step was to look for relevant papers and "Modeling TTL-Based Internet Caches" by Jung, Berger and Balakrishnan was found (included in the ttl-analysis directory). They provide a formal model in by means of mathematical expressions to find the hit and miss ratios of a cache system given the TTL of the cache and the inter-query times of the system. The system assumed in this challenge is different to the one modeled in the paper, however, in that we are refreshing the cache every time there is a query (hit or miss). Their system only refreshes the cache after the TTL has expired. Nevertheless, the paper provided a logical framework for analyzing the problem and their notation and some assumptions were taken from it for the following analysis.
+
+Let's make some assumptions:
+
+* The half life of the queried data is a constant, positive number, given in seconds: "Life".
+* The mean time between queries can be measured and is given: T.
+* The query at time zero will always be a miss.
+* Subsequent queries Sn will be hits until the data expires and so Sn+1 will be a miss.
+
+Now, the following diagram illustrates how the time span where we will get cache misses is between Life and Sn+1 (shaded in red). 
+
+![diagram](./ttl-analysis/diagram.png)
+
+The duration of this time span can be expressed as
+
+    Miss Time (MS) = T - mod(Life,T)  (1)
+
+And 
+
+    Miss Rate = MT/Life               (2)
+    Hit Rate (HR) = 1 - Miss Rate     (3)
+
+Replacing (1) and (2) in (3), we get
+
+    HR = 1 - (T-mod(Life,T))/Life     (4)
+
+Setting a Life of 1000 seconds, here is a plot of HR vs T (spreadsheet included in the ttl-analysis directory):
+
+![Plot](./ttl-analysis/plot.png)
+
+We can see that for inter query times longer than 50 seconds, the hit rate goes below the required 95%. If we set a cache TTL of 50 seconds, we'll get a 95% hit rate.
